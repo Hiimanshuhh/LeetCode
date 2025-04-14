@@ -1,22 +1,24 @@
 #include<iostream>
 #include<vector>
+#include<unordered_set>
 using namespace std;
-bool duplicate(vector<int>arr){
-  for(int i=0; i<arr.size();i++){
-    for(int j=i+1; j<arr.size();j++){
-      if(arr[i]==arr[j]){
-        return true;
-      }
+bool checkDup(vector<int>arr){
+  unordered_set<int>set;
+  for(int i=0; i<arr.size(); i++){
+    if(set.count(arr[i])){
+      return true;
     }
+    set.insert(arr[i]);
   }
   return false;
 }
 int main(){
-  vector<int>arr={1,2,33,4,5,6,7};
-  if(duplicate(arr)){
-    cout<<"yes there is duplicate";
+  vector<int>arr{1,2,3,4,5,1,2};
+  checkDup(arr);
+  if(checkDup(arr)){
+    cout<<"Duplicate Found!";
   }else{
-    cout<<"there is no duplicate";
+    cout<<"No Duplicate Found!";
   }
   return 0;
 }

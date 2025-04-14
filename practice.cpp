@@ -1,20 +1,24 @@
 #include<iostream>
 #include<vector>
-#include<unordered_map>
+#include<unordered_set>
 using namespace std;
-vector<int> valar(vector<int>arr, int target){
-  unordered_map<int,int>map;
+bool checkDup(vector<int>arr){
+  unordered_set<int>set;
   for(int i=0; i<arr.size(); i++){
-    int diff = target-arr[i];
-    if(map.find(diff)!=map.end()){
-      cout<<  map[diff]<< i ;
-      break;
+    if(set.count(arr[i])){
+      return true;
     }
-    map[arr[i]]=i;
+    set.insert(arr[i]);
   }
+  return false;
 }
 int main(){
-  vector<int>arr{2,7,11,15};
-  valar(arr,9);
+  vector<int>arr{1,2,3,4,5,1,2};
+  checkDup(arr);
+  if(checkDup(arr)){
+    cout<<"Duplicate Found!";
+  }else{
+    cout<<"No Duplicate Found!";
+  }
   return 0;
 }
