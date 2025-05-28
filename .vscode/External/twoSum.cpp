@@ -12,7 +12,7 @@ void twoSum(vector <int>arr, int target){
   }
 }
 int main(){
-  vector <int> arr = {1,2,3,4,5,6};
-  twoSum(arr,5);
+  vector<int> arr{2,7,11,15};
+  twoSum(arr,9);
   return 0;
 }
